@@ -11,6 +11,7 @@ unit-test-job:
     - if [[ $TESTS ]]; then
         python -m pytest -n=4 -rN --tb=line -v -k tests 
         --reruns 3 --reruns-delay 3
+      fi
 
 lint-test-job:
   stage: test
