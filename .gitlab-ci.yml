@@ -1,0 +1,35 @@
+              staged:
+  - build
+  - linter
+  - tests
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+     --context "${CI_PROJECT_DIR}"
+     --dockerfile "${CI_PROJECT_DIR}/env/Dockerfile"
+     --destinstion "${CI_REGISTRY_INAGE}:${CI_COMMIT_TAG}"
+  rules:
+    - if: $CI_COMMIT_TAG
+
+tests:
+  stage: tests
+  when: always
+  timeout: 10 minutes
+  script:
+    - TESTS = $(ls tests)
+    - if [[ $TESTS ]]; then
+        python -m pytest -n=4 -rN --tb=line -v -k tests 
+        --reruns 3 --reruns-delay 3
+
+
+linter:
+  stage: linter
+  when: always
+  script:
+    - pip install flake8
+    - - flake8 --verbose .
