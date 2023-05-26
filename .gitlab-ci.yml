@@ -15,5 +15,6 @@ unit-test-job:
 lint-test-job:
   stage: test
   script:
+    - echo $(pwd)
     - pip install flake8
     - flake8 --verbose .
