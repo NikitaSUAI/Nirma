@@ -1,8 +1,16 @@
-image: python:latest
+image: docker:latest
 
 stages:
+  - build
   - test
 
+before_script:
+  - docker info
+
+build:
+  stage: build
+  script:
+    - docker build -t my-docker-image .
 
 unit-test-job:
   stage: test
