@@ -1,0 +1,21 @@
+image: python:latest
+
+stages:
+  - test
+
+unit-test-job:
+  stage: test
+  script:
+    - pip install pytest
+    - |-
+      if [[ $(ls tests) ]]; then
+        python -m pytest -rN --tb=line -v -k tests 
+        --reruns 3 --reruns-delay 3
+      fi
+
+lint-test-job:
+  stage: test
+  script:
+    - echo $(pwd)
+    - pip install flake8
+    - flake8 --verbose .
