@@ -4,5 +4,5 @@ batch_size : 16
 precision : float32
 whisper_model: tiny
 cache_dir : ./.cache/asr_model 
-low_resources : True
+low_resources : False
 use_alignment : True
