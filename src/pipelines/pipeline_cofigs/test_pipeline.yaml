@@ -1,0 +1,3 @@
+pipeline_tasks:
+  dummy_task:
+    config_path: 'tasks/test_task/task_config/dummy_task.yaml'
