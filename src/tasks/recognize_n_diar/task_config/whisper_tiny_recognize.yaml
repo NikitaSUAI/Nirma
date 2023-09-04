@@ -1,7 +1,8 @@
+classname: RecognizeTask
 device : cuda
 batch_size : 16
-precision : float16
+precision : float32
 whisper_model: tiny
-cache_dir : ./cache/asr_model 
+cache_dir : ./.cache/asr_model 
 low_resources : True
 use_alignment : True

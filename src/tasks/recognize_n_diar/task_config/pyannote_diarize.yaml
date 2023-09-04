@@ -1,0 +1,5 @@
+classname: DiarizeTask
+device  : cuda
+cache_dir  : ./.cache/asr_model 
+low_resources  : False
+access_token : None
