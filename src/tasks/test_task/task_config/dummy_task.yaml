@@ -1,0 +1,2 @@
+classname: "DummyTask"
+main_param: "some param from config"
