@@ -1,0 +1,5 @@
+classname: "AudioToValenceDominance"
+feature_extractor_weights_path: 'cache/models/valence_dominance_model'
+model_weight_path: 'cache/models/valence_dominance_model'
+device: 'cpu'
+low_resources: True

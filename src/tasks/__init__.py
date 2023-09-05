@@ -1,1 +1,3 @@
 from src.tasks.test_task.dummy_task import DummyTask
+from src.tasks.audio_emotions_task.audio_to_emotion import AudioToEmotion
+from src.tasks.audio_emotions_task.audio_to_valence_dominance import AudioToValenceDominance
