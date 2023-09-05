@@ -23,9 +23,12 @@ class AudioEmotionModel:
         except Exception as e:
             logger.error(f"Error by load feature_extractor_wights {e}")
             logger.info(f"load extractor weights from repo")
+            cache_dir = feature_extractor_path
             feature_extractor_path = "facebook/hubert-large-ls960-ft"
             self.feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained(feature_extractor_path,
-                                                                              token=config.get("access_token", None))
+                                                                              token=config.get("access_token", None),
+                                                                              cache_dir=cache_dir,
+                                                                              resume_download=True)
         try:
             logger.info(f"load audio emotion model weight from {model_weight_path}")
             self.model = HubertForSequenceClassification.from_pretrained(model_weight_path)
@@ -33,8 +36,11 @@ class AudioEmotionModel:
         except Exception as e:
             logger.error(f"Error by load model_wights {e}")
             logger.info(f"load model weights from repo")
+            cache_dir = model_weight_path
             model_weight_path = "xbgoose/hubert-speech-emotion-recognition-russian-dusha-finetuned"
-            self.model = HubertForSequenceClassification.from_pretrained(model_weight_path)
+            self.model = HubertForSequenceClassification.from_pretrained(model_weight_path,
+                                                                         cache_dir=cache_dir,
+                                                                         resume_download=True)
 
         self.num2emotion = {0: 'нейтральный', 1: 'злой', 2: 'радостный', 3: 'грустный', 4: 'неизвестно'}
 

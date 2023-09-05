@@ -76,9 +76,12 @@ class ValenceDominanceModel:
         except Exception as e:
             logger.error(f"Error by load feature_extractor_wights {e}")
             logger.info(f"load extractor weights from repo")
+            cache_dir = feature_extractor_path
             feature_extractor_path = "audeering/wav2vec2-large-robust-12-ft-emotion-msp-dim"
             self.feature_extractor = Wav2Vec2Processor.from_pretrained(feature_extractor_path,
-                                                                       token=config.get("access_token", None))
+                                                                       token=config.get("access_token", None),
+                                                                       cache_dir=cache_dir,
+                                                                       resume_download=True)
         try:
             logger.info(f"load valence dominance model weight from {model_weight_path}")
             self.model = EmotionModel.from_pretrained(model_weight_path)
@@ -86,8 +89,11 @@ class ValenceDominanceModel:
         except Exception as e:
             logger.error(f"Error by load model_wights {e}")
             logger.info(f"load model weights from repo")
+            cache_dir = model_weight_path
             model_weight_path = "audeering/wav2vec2-large-robust-12-ft-emotion-msp-dim"
-            self.model = EmotionModel.from_pretrained(model_weight_path)
+            self.model = EmotionModel.from_pretrained(model_weight_path,
+                                                      cache_dir=cache_dir,
+                                                      resume_download=True)
 
     def _sec_to_samples(self, sec):
         return int(sec * self.sampling_rate)
@@ -128,7 +134,7 @@ class ValenceDominanceModel:
     @staticmethod
     def init_from_config(config):
         feature_extractor_path = config.get("feature_extractor_weights_path")
-        config["feature_extractor_weights_path"] = pathlib.Path(os.getcwd()) / feature_extractor_path
+        config["feature_extractor_weights_path"] = pathlib.Path(feature_extractor_path).resolve()
         model_weight_path = config.get("model_weight_path")
-        config["model_weight_path"] = pathlib.Path(os.getcwd()) / model_weight_path
+        config["model_weight_path"] = pathlib.Path(model_weight_path).resolve() 
         return ValenceDominanceModel(config)

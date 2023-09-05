@@ -16,7 +16,7 @@ class TestPipeline(BasePipeline):
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
     test_wave, sr = librosa.load("test_wave.wav", sr=16000)
-    cfg_path = "pipeline_cofigs/audio_to_valence_dominance.yaml"
+    cfg_path = "src/pipeline_cofigs/audio_to_valence_dominance.yaml"
     pipeline = TestPipeline.init_from_config(cfg_path)
     result = pipeline.process({"wave": test_wave})
     logging.info(f"valence_dominance {result['valence_dominance']}")
