@@ -1,0 +1,5 @@
+pipeline_tasks:
+  audio_to_valence_dominance:
+    config_path: 'src/tasks/audio_emotions_task/task_configs/valence_dominance.yaml'
+  
+access_token: <your hugging-face token>
