@@ -24,7 +24,7 @@ class AudioToEmotion(BaseTask):
         else:
             logger.info(f"working in low resource mode")
             model = AudioEmotionModel.init_from_config(self.config_params)
-            data["emotion"] = model.process(data['wave'])
+            data = model.process(data)
             gc.collect()
             torch.cuda.empty_cache()
             del model

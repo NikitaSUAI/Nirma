@@ -96,7 +96,9 @@ class DiarizeTask(BaseTask):
                 Whisper requires an audio recording in FLOAT32 format."""
             )
             audio = audio / (2**15)
-            
+
+        data['audio'] = audio
+
         logger.info(f"start diarization")
         if not self.low_resources:
             diarize_segments = self.diarize_model(audio)

@@ -1,3 +1,0 @@
-pipeline_tasks:
-  audio_to_emotions:
-    config_path: 'tasks/audio_emotions_task/task_configs/audio_to_emotion.yaml'

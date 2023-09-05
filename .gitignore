@@ -3,7 +3,7 @@ __pycache__
 .ipynb_checkpoints
 .env
 .venv
-.src/cache/*
+.cache/*
 .vscode
 nirma.egg-info
 *.token

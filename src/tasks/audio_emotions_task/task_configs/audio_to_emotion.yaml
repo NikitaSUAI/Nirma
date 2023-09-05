@@ -3,3 +3,8 @@ feature_extractor_weights_path: 'cache/models/audio_to_emo_feature_extractor'
 model_weight_path: 'cache/models/audio_to_emo_model'
 device: 'cpu'
 low_resources: True
+segment_key: "segments"
+output_key: "segments_emotions"
+wave_key: "audio"
+max_segment_len: 10
+sampling_rate: 16000
