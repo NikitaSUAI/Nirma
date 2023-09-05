@@ -1,0 +1,5 @@
+classname: "AudioToEmotion"
+feature_extractor_weights_path: 'cache/models/audio_to_emo_feature_extractor'
+model_weight_path: 'cache/models/audio_to_emo_model'
+device: 'cpu'
+low_resources: True
