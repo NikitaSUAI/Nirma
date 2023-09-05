@@ -7,7 +7,7 @@
 * [Установить Poetry](https://python-poetry.org/docs/)
 * Склонировать репозиторий:
     ~~~bash
-    ~$ git clone https://gitlab.com/MacJIeHok/nirma.git
+    ~$ git clone https://github.com/NikitaSUAI/Nirma.git
     ~~~
 * Перейти в папку с проектом и установить зависимости. 
     ~~~bash
