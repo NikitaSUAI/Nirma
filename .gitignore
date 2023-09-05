@@ -2,6 +2,9 @@
 __pycache__
 .ipynb_checkpoints
 .env
-.cache/*
+.venv
+.src/cache/*
 .vscode
 nirma.egg-info
+*.token
+*.wav

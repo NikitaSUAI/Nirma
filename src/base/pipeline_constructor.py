@@ -7,6 +7,7 @@ import sys
 import yaml
 
 
+os.environ['TRANSFORMERS_CACHE'] = (pathlib.Path(os.getcwd()).parent/"cache").as_posix()
 logger = logging.getLogger()
 
 
@@ -22,6 +23,7 @@ class BasePipeline:
             if task_conf_path:
                 task_cfg = yaml.load(open(task_conf_path).read(), Loader=yaml.Loader)
                 task_classname = task_cfg.get("classname", None)
+                task_cfg["access_token"] = config.get("access_token", "")
                 task = getattr(sys.modules[__name__], task_classname).init_from_config(task_cfg)
                 self.task_list.append(task)
 
@@ -36,4 +38,11 @@ class BasePipeline:
     @staticmethod
     def init_from_config(config):
         cfg = yaml.load(open(config).read(), Loader=yaml.Loader)
+        try:
+            token_path = pathlib.Path(os.getcwd()).parent/"access.token"
+            with open(token_path, 'r') as fin:
+                access_token = fin.readline().strip()
+            cfg["access_token"] = access_token
+        except:
+            logging.error(f"error in loading huggingFace access token by path {token_path}")
         return BasePipeline(cfg)
