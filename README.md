@@ -14,6 +14,7 @@
     ~$ cd nirma
     ~$ poetry install
     ~~~
+* Необходимо получить токен для скачивания моделей с [hugging-face](https://huggingface.co/settings/tokens) и добавить его в конфиг src/pipelines/pipeline_cofigs/test_pipeline.yaml:acces_token
 * Установка завершена!
 
 # Запуск пайплайна
