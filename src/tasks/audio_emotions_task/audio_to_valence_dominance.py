@@ -3,7 +3,7 @@ from src.tasks.audio_emotions_task.modules.valence_dominance_model import Valenc
 import logging
 import torch
 import gc
-
+import yaml
 
 logger = logging.getLogger()
 
@@ -12,6 +12,9 @@ class AudioToValenceDominance(BaseTask):
 
     def __init__(self, config_params):
         super().__init__()
+        logger.info(
+            f"create class instance witch main params \n{yaml.dump(config_params)}"
+        )
         self.config_params = config_params
         self.low_resources = config_params.get("low_resources", False)
         if not self.low_resources:

@@ -6,6 +6,7 @@ from typing import Dict, Union
 import torch
 import gc
 import numpy as np
+import yaml
 
 logger = logging.getLogger()
 
@@ -25,7 +26,9 @@ class DiarizeTask(BaseTask):
                 * access_token - access token for hugging-face 
         """
         super().__init__()
-        logger.info(f"create class instance witch main param {config_params.get('main_param', 'nothing')}")
+        logger.info(
+            f"create class instance witch main params \n{yaml.dump(config_params)}"
+        )
         self.device = config_params.get("device", "cpu")
         self.cache_dir = Path(config_params.get("cache_dir", "./cache/asr_models"))
         self.cache_dir.mkdir(exist_ok=True, parents=True)
