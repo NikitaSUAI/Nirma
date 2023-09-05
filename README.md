@@ -1,5 +1,32 @@
 # NIRMA
 
+# Установка:
+
+## Установка через Poetry:
+* [Установить git](https://git-scm.com/book/ru/v2/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-Git) 
+* [Установить Poetry](https://python-poetry.org/docs/)
+* Склонировать репозиторий:
+    ~~~bash
+    ~$ git clone https://gitlab.com/MacJIeHok/nirma.git
+    ~~~
+* Перейти в папку с проектом и установить зависимости. 
+    ~~~bash
+    ~$ cd nirma
+    ~$ poetry install
+    ~~~
+* Установка завершена!
+
+# Запуск пайплайна
+
+Для запуска пайлпайна из командной строки необходимо воспользоваться командой:
+~~~bash
+~$ poetry run pipeline \
+    --wav_file <path to wav> \
+    --output <path to output file>\ # default = "test.json"
+    --conf <path to config> # default = "src/pipelines/pipeline_cofigs/test_pipeline.yaml"
+~~~
+
+Помимо возможности запуска из командной строки, доступен бот в [telegram](https://t.me/testing_digital_bot).
 # Структура репозитория
 
 ```
