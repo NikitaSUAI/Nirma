@@ -1,3 +1,7 @@
 pipeline_tasks:
-  dummy_task:
-    config_path: 'tasks/test_task/task_config/audio_to_emotion.yaml'
+  # dummy_task:
+  #   config_path: 'tasks/test_task/task_config/dummy_task.yaml'
+  recognize:
+    config_path: 'src/tasks/recognize/task_config/whisper_tiny_recognize.yaml'
+  diarize:
+    config_path: 'src/tasks/diarize/task_config/pyannote_diarize.yaml'

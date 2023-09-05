@@ -18,7 +18,7 @@ class BasePipeline:
         for task_name in config.get('pipeline_tasks', []):
             logger.info(f"create task {task_name}")
             task_conf_path = config['pipeline_tasks'][task_name].get("config_path", None)
-            task_conf_path = pathlib.Path(os.getcwd()).parent/task_conf_path
+            task_conf_path = pathlib.Path(task_conf_path).resolve()
             logger.info(f"from config path {task_conf_path}")
             if task_conf_path:
                 task_cfg = yaml.load(open(task_conf_path).read(), Loader=yaml.Loader)
