@@ -37,12 +37,12 @@ class BasePipeline:
 
     @staticmethod
     def init_from_config(config):
-        cfg = yaml.load(open(config).read(), Loader=yaml.Loader)
+        cfg = yaml.load(open(pathlib.Path(config).resolve()).read(), Loader=yaml.Loader)
         try:
-            token_path = pathlib.Path(os.getcwd()).parent/"access.token"
+            token_path = pathlib.Path(os.getcwd())/"src"/"access.token"
             with open(token_path, 'r') as fin:
                 access_token = fin.readline().strip()
             cfg["access_token"] = access_token
-        except:
+        except Exception as e:
             logging.error(f"error in loading huggingFace access token by path {token_path}")
         return BasePipeline(cfg)

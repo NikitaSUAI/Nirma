@@ -96,6 +96,8 @@ class RecognizeTask(BaseTask):
             )
             audio = audio / (2**15)
 
+        data['audio'] = audio
+
         logger.info(f"start speech recognition")
         if not self.low_resources:
             data.update(self.asr_model.transcribe(
